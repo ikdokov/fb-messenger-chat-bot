@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import pyjokes
 
 import requests
 from flask import Flask, request
@@ -17,7 +18,7 @@ def verify():
             return "Verification token mismatch", 403
         return request.args["hub.challenge"], 200
 
-    return "Hello world and token", 200
+    return "" + pyjokes.get_joke(), 200
 
 
 @app.route('/', methods=['POST'])
